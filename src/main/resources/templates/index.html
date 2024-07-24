@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Загадайте двухзнвчное число</title>
+</head>
+<body>
+<h4> ID сессии:  <tr th:text ="${sessionId}"></tr> </h4>
+
+<h1>Загадайте двухзначное число</h1>
+
+
+<form action="/submit" method="post">
+    <input type="number" name="userHiddenNumber" min="10" max="99" required>
+    <button type="submit">Подтвердить</button>
+</form>
+
+<h2>История ваших чисел:</h2>
+<tr th:each="number : ${userHiddenNumber}">
+    <td th:text="${number}"></td>
+</tr>
+
+<h2>Догадки экстрасенсов:</h2>
+<table>
+    <tr>
+        <th> Имя экстрасенса </th>
+        <th> Уровень достоверности </th>
+        <th> Догадки </th>
+    </tr>
+    <tr th:each="psychic : ${psychics}">
+        <td th:text = "${psychic.name}"></td>
+        <td th:text = "${psychic.rating}"></td>
+        <td th:text = "${psychic.guessNumber}"></td>
+    </tr>
+</table>
+</body>
+</html>
