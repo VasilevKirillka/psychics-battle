@@ -1,11 +1,16 @@
 package com.example.psychics_battle.service;
 
-import jakarta.servlet.http.HttpSession;
-import org.springframework.ui.Model;
+import com.example.psychics_battle.entity.Psychic;
+import com.example.psychics_battle.entity.User;
+
+
+import java.util.List;
 
 public interface MainService {
 
-    String index(HttpSession session, Model model);
+    String index(User userSession, List<Psychic> psychicList, String id );
 
-    String guess(int userHiddenNumber, HttpSession session);
+    String guess(User UserSession, List<Psychic> psychicList, int userHiddenNumber, String id);
+
+    String logout(String id);
 }
